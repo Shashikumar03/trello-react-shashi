@@ -1,0 +1,143 @@
+root {
+  --dark-blue: hsl(209, 23%, 22%);
+  --very-dark-blue: hsl(207, 26%, 17%);
+  --very-dark-blue-light-mode: hsl(200, 15%, 8%);
+  --dark-gray: hsl(0, 0%, 52%);
+  --very-light-gray: hsl(0, 0%, 98%);
+  --white: hsl(0, 0%, 100%);
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+}
+body {
+  font-family: "Nunito Sans", sans-serif;
+  /* background-color: aqua; */
+}
+.navbar {
+  background-color: aqua;
+}
+
+.container1 {
+  display: flex;
+}
+.container-nav {
+  display: flex;
+  gap: 0.2rem;
+  margin: 1rem;
+  width: 20%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidemenu {
+  height: 90vh;
+  width: 10%;
+  display: flex;
+  justify-content: center;
+  background-color: lightgreen;
+}
+
+.boardList {
+  display: flex;
+  margin: 1rem;
+  gap: 0.5rem;
+}
+.card1 {
+  height: 5rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  width: 8rem;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: flex-start;
+}
+.card1:hover {
+  cursor: pointer;
+}
+
+.create-board {
+  display: flex;
+  gap: 0.5rem;
+}
+.board-text-field {
+  width: 10rem;
+}
+.link-to-board {
+  text-decoration: none;
+  color: black;
+}
+.board-container {
+  display: flex;
+}
+.board-page {
+  /* border: 2px solid red; */
+  width: 100%;
+}
+.list-itrate {
+  /* border: 2px solid black; */
+  display: flex;
+  gap: 0.8rem;
+}
+.board-list-div {
+  /* border: 2px solid blue; */
+  min-height: 5rem;
+  min-width: 8rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.add-another-list {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  padding: 0.5rem;
+  width: fit-content;
+}
+.list-input {
+  /* border: 2px solid red; */
+  width: 8rem;
+}
+.list-text {
+  /* border: 2px solid red; */
+  display: flex;
+  gap: 0.2rem;
+}
+.add-list-button {
+  text-decoration: none;
+  border: none;
+}
+.list-card-button {
+  border: none;
+  background-color: transparent;
+}
+.list-three-dot-div {
+  /* border: 2px solid red; */
+  display: flex;
+  justify-content: space-between;
+}
+.three-dot:hover {
+  cursor: pointer;
+}
+.board-list {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.list-card {
+  /* border: 2px solid red; */
+  display: flex;
+  gap: 1.5rem;
+  padding-left: 0.5rem;
+}
+.list-card-div {
+  margin-top: 0.5rem;
+}
+.add-cart-text {
+  max-width: 8rem;
+}
