@@ -74,10 +74,16 @@ body {
 }
 .board-container {
   display: flex;
+  /* border: 2px solid red; */
+
+  width: 100%;
 }
 .board-page {
-  /* border: 2px solid red; */
+  /* border: 10px solid red; */
+  display: flex;
   width: 100%;
+  flex-wrap: wrap;
+  height: 3rem;
 }
 .list-itrate {
   /* border: 2px solid black; */
@@ -128,16 +134,47 @@ body {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   padding: 0.5rem;
   margin: 0.5rem;
+  /* border: 2px solid red; */
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  min-width: 10rem;
 }
 .list-card {
   /* border: 2px solid red; */
   display: flex;
   gap: 1.5rem;
   padding-left: 0.5rem;
+  flex-wrap: wrap;
 }
 .list-card-div {
   margin-top: 0.5rem;
 }
 .add-cart-text {
   max-width: 8rem;
+}
+.list-name {
+  width: 8rem;
+}
+.edit-save {
+  display: flex;
+  flex-direction: column;
+}
+.delete:hover {
+  color: red;
+  cursor: pointer;
+}
+.save-button {
+  width: 1rem;
+
+  width: fit-content;
+  padding: 0.1rem;
+  border-radius: 0.5rem;
+  background-color: paleturquoise;
+}
+.add-new-list {
+  display: flex;
+  gap: 0.5rem;
+  /* border: 2px solid black; */
+  width: 100%;
 }

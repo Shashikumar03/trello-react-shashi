@@ -6,11 +6,13 @@ import fetchListonBoard from "../service/fetchListonBoard";
 import Navbar from "../component/Navbar";
 import SideMenu from "../component/SideMenu";
 import ViewBoardList from "../component/ViewBoardList";
+import createNewList from "../service/createNewList";
 
 function BoardPage() {
   const navigate = useNavigate();
   const { id } = useParams();
   const [listArray, setListArray] = useState([]);
+  const [listName, setListName] = useState();
 
   function handleBack() {
     navigate(-1);
@@ -23,13 +25,27 @@ function BoardPage() {
     }
     getListOfABoard();
   }, []);
-
+  function handleListChange(e) {
+    setListName(e.target.value);
+  }
+  function addList(listId) {
+    createNewList(listId, listName)
+      .then((result) =>
+        setListArray((prev) => {
+          setListName("");
+          return [...prev, result];
+        })
+      )
+      .catch((err) => {
+        console.log(err);
+      });
+  }
   return (
     <>
       <Navbar />
       <div className="board-container">
         <SideMenu />
-        <p></p>
+
         <div className="board-page">
           <div>
             <Button onClick={handleBack}>
@@ -37,12 +53,34 @@ function BoardPage() {
               back
             </Button>
           </div>
-          <div className="list-card">
-            {listArray
-              ? listArray.map((item) => (
-                  <ViewBoardList id={item.id} name={item.name} />
-                ))
-              : null}
+          <div className="add-new-list">
+            <div className="list-card">
+              {listArray
+                ? listArray.map((item) => (
+                    <ViewBoardList id={item.id} name={item.name} />
+                  ))
+                : null}
+
+              <div className="add-another-list">
+                <div>+add another list</div>
+                <div className="list-text">
+                  <input
+                    className="list-input"
+                    type="text"
+                    placeholder="enter list name"
+                    onChange={handleListChange}
+                    value={listName}
+                  />
+                  <button
+                    className="add-list-button"
+                    type="button"
+                    onClick={() => addList(id)}
+                  >
+                    add
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
