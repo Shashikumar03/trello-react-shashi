@@ -10,7 +10,6 @@ function getCheckItemsOnCheckList(id) {
       `https://api.trello.com/1/checklists/${id}/checkItems?key=${key}&token=${token}`
     )
     .then((result) => {
-      console.log(result.data);
       return result.data;
     })
     .catch((err) => {

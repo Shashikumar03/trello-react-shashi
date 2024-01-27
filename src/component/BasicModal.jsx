@@ -12,8 +12,9 @@ import DeleteForeverTwoToneIcon from "@mui/icons-material/DeleteForeverTwoTone";
 import ChecklistRtlTwoToneIcon from "@mui/icons-material/ChecklistRtlTwoTone";
 import CloseTwoToneIcon from "@mui/icons-material/CloseTwoTone";
 import createACheckListOnCard from "../service/createACheckListOnCard";
-import createCheckItemOnList from "../service/createCheckItemOnList";
+
 import AddItems from "./AddItems";
+import deleteCheckList from "../service/deleteCheckList";
 
 const style = {
   position: "absolute",
@@ -34,9 +35,8 @@ export default function BasicModal({ nameOfCard, id }) {
   const [checkListArray, setCheckListArray] = useState([]);
   const [checkListName, setCheckListName] = useState("");
   const [isFocused, setIsFocused] = useState(false);
-  const [displayedAddItem, setDisplayAddItem] = useState(false);
-  const [itemName, setItemName] = useState("");
-  const [isFocuseInAddItem, setFocuseInAddItem] = useState(false);
+
+  // const [checkItems, setCheckItems] = useState([]);
 
   useEffect(() => {
     getCheckList(id)
@@ -63,47 +63,33 @@ export default function BasicModal({ nameOfCard, id }) {
         console.log(err);
       });
   }
-  console.log(checkListArray);
+
   const handleFocus = () => {
     setIsFocused(true);
   };
 
-  const handleBlur = () => {
-    setIsFocused(false);
-  };
+  // const handleBlur = () => {
+  //   setIsFocused(false);
+  // };
 
   const handleCancel = () => {
     setCheckListName("");
-    setIsFocused(false); // Ensure focus state is also reset
+    setIsFocused(false);
   };
-  function handleClickAddItems(id) {
-    setDisplayAddItem(id);
-  }
 
-  function handleAddItemInput(e) {
-    setItemName(e.target.value);
-  }
-
-  const handleInAddItemFocus = () => {
-    setFocuseInAddItem(true);
-  };
-  function handleCancelInAddItem() {
-    setItemName("");
-    setDisplayAddItem(false);
-    setFocuseInAddItem(false);
-  }
-  const addItems = (checkId) => {
-    createCheckItemOnList(checkId, itemName)
-      .then((result) => {
-        console.log(result);
-
-        setFocuseInAddItem(false);
-        setDisplayAddItem(false);
+  function deleteCheckListFn(listId) {
+    deleteCheckList(listId)
+      .then((res) => {
+        if (res.status === 200) {
+          setCheckListArray((prev) =>
+            prev.filter((item) => item.id !== listId)
+          );
+        }
       })
-      .catch((err) => {
-        console.error(err);
-      });
-  };
+      .catch((err) => console.log(err));
+  }
+  // --------------------------------------------------------------------------
+
   return (
     <div>
       <Button onClick={handleOpen}>{nameOfCard}</Button>
@@ -121,53 +107,16 @@ export default function BasicModal({ nameOfCard, id }) {
             <div className="already-present-checklist">
               <ul className="my-list1">
                 {checkListArray?.map((item) => (
-                  <div style={{ margin: "0.3rem" }}>
+                  <div key={item.id} style={{ margin: "0.3rem" }}>
                     <div className="add-items">
                       <ChecklistRtlTwoToneIcon />
                       <li key={item.id}>{item.name}</li>
-                      <DeleteForeverTwoToneIcon className="delete-icon" />
+                      <DeleteForeverTwoToneIcon
+                        onClick={() => deleteCheckListFn(item.id)}
+                        className="delete-icon"
+                      />
                     </div>
-                    {/* --------------------------- */}
                     <AddItems checkListId={item.id} />
-                    <div className="add-items-div">
-                      <button
-                        style={{
-                          border: "none",
-                        }}
-                        type="button"
-                        onClick={() => handleClickAddItems(item.id)}
-                      >
-                        add item
-                      </button>
-
-                      {/* <CloseTwoToneIcon className="close-icon" /> */}
-                    </div>
-                    {displayedAddItem === item.id ? (
-                      <div>
-                        <input
-                          className="add-checklist-input"
-                          type="text"
-                          placeholder="add item"
-                          onChange={handleAddItemInput}
-                          value={itemName}
-                          onFocus={handleInAddItemFocus}
-                          // onBlur={handleBlur}
-                        />
-
-                        {isFocuseInAddItem ? (
-                          <div className="add-close-checklist">
-                            <CancelTwoToneIcon
-                              className="cancel-icon"
-                              onClick={handleCancelInAddItem}
-                            />
-                            <AddBoxIcon
-                              className="add-icon"
-                              onClick={() => addItems(item.id)}
-                            />
-                          </div>
-                        ) : null}
-                      </div>
-                    ) : null}
                   </div>
                 ))}
               </ul>
