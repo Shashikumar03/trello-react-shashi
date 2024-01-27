@@ -8,8 +8,10 @@ import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
 import Button from "@mui/material/Button";
 import deleteCard from "../service/deleteCard";
 import updateCard from "../service/updateCard";
+import CheckListPage from "../pages/CheckListPage";
+import BasicModal from "./BasicModal";
 
-function ViewBoardList({ id, name }) {
+function ViewBoardList({ id, name, setShowCheckList, setCardId }) {
   const [cards, setCards] = useState([]);
   const [isDisplayed, setDisplayed] = useState(false);
   const [cardName, setCardName] = useState("");
@@ -89,94 +91,73 @@ function ViewBoardList({ id, name }) {
         console.log(err);
       });
   }
+  function handleCheckList(idCard) {
+    setShowCheckList(true);
+    setCardId(idCard);
+  }
   return (
     <>
-      <div className="list-itrate">
-        <div className="board-list-div">
-          <div className="list-three-dot-div">
-            <p>{name}</p>
-            <MoreHorizIcon className="three-dot" />
-          </div>
-          <div>
-            {cards?.map((item) => {
-              return (
-                <div
-                  className="board-list"
-                  onMouseEnter={() => setIsHovered(item.id)}
-                  onMouseLeave={() => setIsHovered(false)}
-                >
-                  {isEdit === item.id && isHovered === item.id ? (
-                    <div className="edit-save">
-                      <input
-                        type="text"
-                        className="list-name"
-                        value={editName}
-                        onChange={handleEditChnage}
-                      />
-                      <div className="save-delete">
-                        <button
-                          className="save-button"
-                          type="button"
-                          onClick={() => saveEditCardName(item.id)}
-                        >
-                          save
-                        </button>
-                        <DeleteForeverRoundedIcon
-                          className="delete"
-                          onClick={() => handledeDeleteCard(item.id)}
+      <div className="viewBoard-conatiner">
+        <div className="list-itrate">
+          <div className="board-list-div">
+            <div className="list-three-dot-div">
+              <p>{name}</p>
+              <MoreHorizIcon className="three-dot" />
+            </div>
+            <div>
+              {cards?.map((item) => {
+                return (
+                  <div
+                    className="board-list"
+                    onMouseEnter={() => setIsHovered(item.id)}
+                    onMouseLeave={() => setIsHovered(false)}
+                  >
+                    {isEdit === item.id && isHovered === item.id ? (
+                      <div className="edit-save">
+                        <input
+                          type="text"
+                          className="list-name"
+                          value={editName}
+                          onChange={handleEditChnage}
                         />
+                        <div className="save-delete">
+                          <button
+                            className="save-button"
+                            type="button"
+                            onClick={() => saveEditCardName(item.id)}
+                          >
+                            save
+                          </button>
+                          <DeleteForeverRoundedIcon
+                            className="delete"
+                            onClick={() => handledeDeleteCard(item.id)}
+                          />
+                        </div>
                       </div>
-                    </div>
-                  ) : (
-                    <span>{item.name}</span>
-                  )}
-                  {isHovered === item.id ? (
-                    <EditNoteIcon
-                      onClick={() => handleEdit(item.id, item.name)}
-                    />
-                  ) : null}
-                </div>
-              );
-            })}
-            {isDisplayed ? (
-              <div>
-                <input
-                  type="text"
-                  className="add-cart-text"
-                  value={cardName}
-                  onChange={handleInput}
-                />
-                <button type="button" onClick={() => addCard(id)}>
-                  add card
-                </button>
-              </div>
-            ) : null}
-          </div>
+                    ) : (
+                      <BasicModal nameOfCard={item.name} id={item.id} />
+                    )}
+                    {isHovered === item.id ? (
+                      <EditNoteIcon
+                        onClick={() => handleEdit(item.id, item.name)}
+                      />
+                    ) : null}
+                  </div>
+                );
+              })}
+            </div>
 
-          <div className="list-card-div">
-            <button
-              type="button"
-              className="list-card-button"
-              onClick={() => handleClick(id)}
-            >
-              + add card
-            </button>
+            <div className="list-card-div">
+              <button
+                type="button"
+                className="list-card-button"
+                onClick={() => handleClick(id)}
+              >
+                + add card
+              </button>
+            </div>
           </div>
         </div>
-
-        {/* <div className="add-another-list">
-          <div>+add another list</div>
-          <div className="list-text">
-            <input
-              className="list-input"
-              type="text"
-              placeholder="enter list name"
-            />
-            <button className="add-list-button" type="button">
-              add
-            </button>
-          </div>
-        </div> */}
       </div>
     </>
   );

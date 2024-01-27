@@ -74,7 +74,6 @@ body {
 }
 .board-container {
   display: flex;
-  /* border: 2px solid red; */
 
   width: 100%;
 }
@@ -84,9 +83,10 @@ body {
   width: 100%;
   flex-wrap: wrap;
   height: 3rem;
+  position: relative;
 }
 .list-itrate {
-  /* border: 2px solid black; */
+  border: 2px solid black;
   display: flex;
   gap: 0.8rem;
 }
@@ -177,4 +177,70 @@ body {
   gap: 0.5rem;
   /* border: 2px solid black; */
   width: 100%;
+}
+.checklist-page {
+  border: 2px solid red;
+  position: absolute;
+  /* right: 50%; */
+  top: 20%;
+  height: 30rem;
+  width: 50%;
+  right: 20rem;
+  /* left: 50%; */
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  background-color: lightblue;
+  color: white;
+}
+.viewBoard-conatiner {
+  /* border: 2px solid rgb(38, 34, 82); */
+}
+.checklist-item {
+  border: 1px solid red;
+  display: flex;
+  padding: 0.5rem;
+  margin-top: 1rem;
+}
+
+.already-present-checklist {
+  border-right: 2px solid rgb(67, 62, 62);
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+}
+.my-list1 {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 50%;
+  width: fit-content;
+}
+.create-checkList {
+  width: 50%;
+}
+.create-checkList1 {
+  display: flex;
+  flex-direction: column;
+  /* border: 2px solid red; */
+  gap: 0.3rem;
+}
+.add-checklist-input {
+  width: 100%;
+}
+.add-close-checklist {
+  background-color: lightgreen;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.2rem;
+  border-radius: 0.4rem;
+}
+.adding-new-check {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.add-items {
+  /* border: 2px solid red; */
+  display: flex;
+  justify-content: space-between;
 }

@@ -7,12 +7,16 @@ import Navbar from "../component/Navbar";
 import SideMenu from "../component/SideMenu";
 import ViewBoardList from "../component/ViewBoardList";
 import createNewList from "../service/createNewList";
+import CheckListPage from "./CheckListPage";
+import BasicModal from "../component/BasicModal";
 
 function BoardPage() {
   const navigate = useNavigate();
   const { id } = useParams();
   const [listArray, setListArray] = useState([]);
   const [listName, setListName] = useState();
+  const [showCheckList, setShowCheckList] = useState(false);
+  const [cardId, setCardId] = useState("");
 
   function handleBack() {
     navigate(-1);
@@ -56,9 +60,19 @@ function BoardPage() {
           <div className="add-new-list">
             <div className="list-card">
               {listArray
-                ? listArray.map((item) => (
-                    <ViewBoardList id={item.id} name={item.name} />
-                  ))
+                ? listArray.map((item) => {
+                    return (
+                      <div>
+                        <ViewBoardList
+                          id={item.id}
+                          name={item.name}
+                          setShowCheckList={setShowCheckList}
+                          setCardId={setCardId}
+                        />
+                        
+                      </div>
+                    );
+                  })
                 : null}
 
               <div className="add-another-list">
