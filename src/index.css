@@ -86,7 +86,7 @@ body {
   position: relative;
 }
 .list-itrate {
-  border: 2px solid black;
+  /* border: 2px solid black; */
   display: flex;
   gap: 0.8rem;
 }
@@ -179,7 +179,7 @@ body {
   width: 100%;
 }
 .checklist-page {
-  border: 2px solid red;
+  /* border: 2px solid red; */
   position: absolute;
   /* right: 50%; */
   top: 20%;
@@ -243,4 +243,25 @@ body {
   /* border: 2px solid red; */
   display: flex;
   justify-content: space-between;
+}
+.add-items-div {
+  /* border: 2px solid red; */
+  display: flex;
+  justify-content: space-between;
+  padding: 0.2rem;
+}
+.close-icon:hover,
+.delete-icon:hover,
+.add-icon:hover,
+.cancel-icon:hover {
+  cursor: pointer;
+  color: red;
+}
+.add-items-div {
+  /* border: 2px solid red; */
+  display: flex;
+  justify-content: space-between;
+  padding: 0.2rem;
+  gap: 0.2rem;
+  /* margin: 0.2rem; */
 }
