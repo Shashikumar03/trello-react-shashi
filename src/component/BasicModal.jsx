@@ -92,7 +92,9 @@ export default function BasicModal({ nameOfCard, id }) {
 
   return (
     <div>
-      <Button onClick={handleOpen}>{nameOfCard}</Button>
+      <Button className="card-name" onClick={handleOpen}>
+        {nameOfCard}
+      </Button>
       <Modal
         open={open}
         onClose={handleClose}

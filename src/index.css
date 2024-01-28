@@ -127,8 +127,16 @@ body {
   display: flex;
   justify-content: space-between;
 }
+.Edit-card-name:hover {
+  color: red;
+  cursor: pointer;
+}
+.card-name:hover {
+  color: red;
+}
 .three-dot:hover {
   cursor: pointer;
+  color: green;
 }
 .board-list {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -149,9 +157,21 @@ body {
 }
 .list-card-div {
   margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.card-input {
+  width: 50%;
 }
 .add-cart-text {
   max-width: 8rem;
+}
+.delete-card:hover,
+.add-card:hover {
+  color: red;
+  cursor: pointer;
 }
 .list-name {
   width: 8rem;
@@ -195,6 +215,14 @@ body {
 }
 .viewBoard-conatiner {
   /* border: 2px solid rgb(38, 34, 82); */
+}
+.a {
+  /* border: 2px solid red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.2rem;
 }
 .checklist-item {
   border: 1px solid red;
@@ -264,4 +292,11 @@ body {
   padding: 0.2rem;
   gap: 0.2rem;
   /* margin: 0.2rem; */
+}
+.popover {
+  border: 2px solid red;
+}
+.archive:hover {
+  cursor: pointer;
+  color: darkorange;
 }

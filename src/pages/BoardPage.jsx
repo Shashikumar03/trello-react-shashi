@@ -63,13 +63,15 @@ function BoardPage() {
                 ? listArray.map((item) => {
                     return (
                       <div>
-                        <ViewBoardList
-                          id={item.id}
-                          name={item.name}
-                          setShowCheckList={setShowCheckList}
-                          setCardId={setCardId}
-                        />
-                        
+                        {!item.close ? (
+                          <ViewBoardList
+                            id={item.id}
+                            name={item.name}
+                            setShowCheckList={setShowCheckList}
+                            setCardId={setCardId}
+                            setListArray={setListArray}
+                          />
+                        ) : null}
                       </div>
                     );
                   })
