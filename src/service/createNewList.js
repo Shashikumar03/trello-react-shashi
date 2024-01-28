@@ -1,5 +1,4 @@
 import axios from "axios";
-import React from "react";
 
 function createNewList(id, name) {
   const key = "1e8fc84d1844931bc0c2e1dec3b8cb6a";
