@@ -41,7 +41,19 @@ body {
   justify-content: center;
   background-color: lightgreen;
 }
-
+.boards {
+  /* border: 2px solid red; */
+  height: fit-content;
+  display: flex;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  padding: 0.5rem;
+}
+.delete-board-button:hover {
+  cursor: pointer;
+  color: red;
+}
 .boardList {
   display: flex;
   margin: 1rem;
@@ -49,13 +61,11 @@ body {
 }
 .card1 {
   height: 5rem;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
-    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+
   width: 8rem;
   padding: 0.5rem;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
 }
 .card1:hover {
   cursor: pointer;
@@ -262,6 +272,7 @@ body {
   padding: 0.2rem;
   border-radius: 0.4rem;
 }
+
 .adding-new-check {
   display: flex;
   flex-direction: column;
@@ -299,4 +310,8 @@ body {
 .archive:hover {
   cursor: pointer;
   color: darkorange;
+}
+.cancel-button:hover {
+  cursor: pointer;
+  color: red;
 }

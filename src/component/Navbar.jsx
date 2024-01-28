@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import createBoardApi from "../service/createBoardApi";
 
-function Navbar({ setNewBoard }) {
+function Navbar({ setNewBoard, board }) {
   const [text, setText] = useState(false);
   const [boardText, setBoardText] = useState("");
   function handleClick() {
@@ -40,7 +40,7 @@ function Navbar({ setNewBoard }) {
           />
         </a>
         <div className="create-board">
-          {!text ? (
+          {!text && Array.isArray(board) ? (
             <button
               onClick={handleClick}
               type="button"
@@ -61,6 +61,17 @@ function Navbar({ setNewBoard }) {
             </div>
           ) : null}
         </div>
+        {Array.isArray(board) ? (
+          <div>
+            you can create
+            <span
+              style={{ color: "red", fontWeight: "bold", margin: "0.2rem" }}
+            >
+              {10 - board.length}
+            </span>
+            board
+          </div>
+        ) : null}
       </div>
     </nav>
   );

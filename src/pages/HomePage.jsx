@@ -6,7 +6,6 @@ import ViewBoard from "../component/ViewBoard";
 
 function HomePage() {
   const [board, setBoard] = useState([]);
-  
 
   useEffect(() => {
     async function apiFetching() {
@@ -18,11 +17,11 @@ function HomePage() {
 
   return (
     <>
-      <Navbar setNewBoard={setBoard} />
+      <Navbar setNewBoard={setBoard} board={board} />
       <div className="container1">
         <SideMenu />
         <div className="boardList">
-          <ViewBoard board={board} />
+          <ViewBoard board={board} setBoard={setBoard} />
         </div>
       </div>
     </>

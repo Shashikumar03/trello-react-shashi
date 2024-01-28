@@ -64,6 +64,7 @@ function AddItems({ checkListId }) {
                     <CheckBoxOutlineBlankTwoToneIcon />
                     <div key={item.id}>{item.name}</div>
                     <CancelRoundedIcon
+                      className="cancel-button"
                       onClick={() => deleteCheckItemfFromList(item.id)}
                     />
                   </div>
